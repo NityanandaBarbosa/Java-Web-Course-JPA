@@ -1,9 +1,14 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,12 +22,6 @@ public class Aluno {
 	@Column (name = "nome_aluno")
 	private String nome;
 	
-	public Endereco getEndereco() {
-		return endereco;
-	}
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
 	@Column (name = "rg")
 	private String RG;
 	
@@ -31,6 +30,12 @@ public class Aluno {
 	
 	@OneToOne
 	private Endereco endereco;
+	
+	@ManyToOne
+	private Sede sede;
+	
+	@OneToMany
+	private Collection<Telefone> telefones = new ArrayList<Telefone>();
 	
 	public Long getId() {
 		return id;
@@ -56,5 +61,23 @@ public class Aluno {
 	public void setCPF(String CPF) {
 		this.CPF = CPF;
 	}
-
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	public Sede getSede() {
+		return sede;
+	}
+	public void setSede(Sede sede) {
+		this.sede = sede;
+	}
+	public Collection<Telefone> getTelefones() {
+		return telefones;
+	}
+	public void setTelefones(Collection<Telefone> telefones) {
+		this.telefones = telefones;
+	}
+	
 }
