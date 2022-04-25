@@ -2,7 +2,7 @@ package class_6;
 
 import javax.persistence.EntityManager;
 
-import class_5.Aluno;
+import models.Aluno;
 import utils.JpaUtils;
 
 public class ClientDeleteAluno {
